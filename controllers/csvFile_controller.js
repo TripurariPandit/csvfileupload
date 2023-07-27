@@ -2,6 +2,7 @@ const CSV = require('../models/csv');
 const csvParser = require('csv-parser');
 const fs = require('fs');
 
+// upload csv file
 module.exports.upload = async function(req, res){
     try{
         if(req.file.mimetype != 'text/csv'){
@@ -20,6 +21,7 @@ module.exports.upload = async function(req, res){
     }
 }
 
+// for display csv file data on the page
 module.exports.view = async function(req, res){
     try{
         const csvFile = await CSV.findById(req.params.id);
@@ -51,6 +53,7 @@ module.exports.view = async function(req, res){
     }
 }
 
+// to delete the csv file
 module.exports.delete = async function(req, res){
     try{
         const file = await CSV.findById(req.params.id);

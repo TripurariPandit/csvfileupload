@@ -6,6 +6,7 @@ const FILE_PATH = path.join('/uploads/file');
 
 const csvFileController = require('../controllers/csvFile_controller');
 
+// for multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '..', FILE_PATH));
@@ -15,7 +16,6 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + uniqueSuffix)
     }
 });
-
 const upload = multer({ storage: storage })
 
 router.post('/upload', upload.single('file'), csvFileController.upload);

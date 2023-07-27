@@ -1,5 +1,6 @@
 const File = require('../models/csv');
 
+// for display home page
 module.exports.home = async function(req, res){
     try{
         const file = await File.find({});
