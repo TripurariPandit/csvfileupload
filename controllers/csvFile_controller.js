@@ -34,6 +34,9 @@ module.exports.view = async function(req, res){
                 csvHeader.push(head);
             });
         })
+        .on('error', (err)=>{
+            console.log(`Error in open in file ${err}`);
+        })
         .on('data', (data)=>{
             csvData.push(data);
         })
